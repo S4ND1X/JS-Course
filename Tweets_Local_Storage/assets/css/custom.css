@@ -39,7 +39,6 @@ textarea {
   font-size: 1rem;
   line-height: 2rem;
   font-weight: 300;
-  background: #ffffff;
   border: none;
   border-radius: 1rem;
   outline: none;
@@ -85,14 +84,12 @@ textarea:placeholder-shown {
     display: flex;
     justify-content: space-between;
     width: 90%;
-    border: 1px solid red;
     margin: 0 auto;
     max-height: 100vh;
     height: 75vh;
   }
 
   .form-container {
-    border: 1px solid black;
     flex-basis: calc(45% - 10px);
     text-align: center;
     max-height: 100%;
@@ -101,8 +98,25 @@ textarea:placeholder-shown {
   /* Tweets */
 
   .tweets-container {
-    border: 1px solid black;
     flex-basis: calc(45% - 10px);
     max-height: 100%;
+  }
+
+
+  #lista-tweets{
+    -webkit-tap-highlight-color: transparent;
+    width: 70%;
+    min-height: 8rem;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    line-height: 2rem;
+    font-weight: 300;
+    border: none;
+    border-radius: 1rem;
+    outline: none;
+    box-shadow: 18px 18px 30px #d1d9e9, -18px -18px 30px #ffffff;
+    resize: vertical;
+    transition: ease 0.2s;
+    margin: auto auto;
   }
 }
