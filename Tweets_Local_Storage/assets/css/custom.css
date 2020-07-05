@@ -1,14 +1,108 @@
-h1, h2 {
-    text-align: center;
+/* Globales */
+
+html {
+  height: 100%;
+  background: #ecf0f3;
 }
 
-#contenido {
-    margin-top: 40px;
+* {
+  font-family: "Montserrat", sans-serif;
+  color: #9fa8da;
+  letter-spacing: 0.05rem;
 }
-.borrar-tweet,
-.borrar-tweet:hover {
-    float: right;
-    cursor: pointer;
-    color: red;
-    font-weight: bold;
+
+h1 {
+  font-size: 3rem;
+  font-weight: bolder;
+  text-align: center;
+}
+h2 {
+  font-size: 2rem;
+  font-weight: 100;
+  text-align: center;
+}
+
+/* Text area neumorphism */
+
+.box {
+  display: block;
+  width: 80%;
+  max-width: 900px;
+  margin: auto auto;
+}
+
+textarea {
+  -webkit-tap-highlight-color: transparent;
+  width: inherit;
+  min-height: 8rem;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 300;
+  background: #ffffff;
+  border: none;
+  border-radius: 1rem;
+  outline: none;
+  box-shadow: 18px 18px 30px #d1d9e9, -18px -18px 30px #ffffff;
+  resize: vertical;
+  transition: ease 0.2s;
+  cursor: pointer;
+}
+
+textarea::placeholder {
+  color: #9fa8da;
+}
+
+textarea:focus {
+  min-height: 12rem;
+  box-shadow: inset 18px 18px 30px #d1d9e9, inset -18px -18px 30px #ffffff;
+}
+
+/* Chrome/Opera/Safari */
+::-webkit-input-placeholder {
+  color: transparent;
+}
+/* Firefox 19+ */
+::-moz-placeholder {
+  color: transparent;
+}
+/* IE 10+ */
+:-ms-input-placeholder {
+  color: transparent;
+}
+/* Firefox 18- */
+:-moz-placeholder {
+  color: transparent;
+}
+
+textarea:placeholder-shown {
+  background: none;
+}
+
+/* Main content */
+@media (min-width: 768px) {
+  .flex-container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    border: 1px solid red;
+    margin: 0 auto;
+    max-height: 100vh;
+    height: 75vh;
+  }
+
+  .form-container {
+    border: 1px solid black;
+    flex-basis: calc(45% - 10px);
+    text-align: center;
+    max-height: 100%;
+  }
+
+  /* Tweets */
+
+  .tweets-container {
+    border: 1px solid black;
+    flex-basis: calc(45% - 10px);
+    max-height: 100%;
+  }
 }
