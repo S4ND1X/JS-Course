@@ -12,8 +12,8 @@ html {
 }
 
 h1 {
-  font-size: 3rem;
-  font-weight: bolder;
+  font-size: 3.5rem;
+  font-weight: 200;
   text-align: center;
 }
 h2 {
@@ -86,7 +86,7 @@ textarea:placeholder-shown {
     width: 90%;
     margin: 0 auto;
     max-height: 100vh;
-    height: 75vh;
+    height: 50vh;
   }
 
   .form-container {
@@ -119,4 +119,33 @@ textarea:placeholder-shown {
     transition: ease 0.2s;
     margin: auto auto;
   }
+}
+
+
+/* Submit Button */
+
+.button-container{
+    text-align: center;
+}
+
+.button-container input[type='button']{
+    width: 170px;
+    height: 70px;
+    font-size: 20px;
+    border-radius: 80px;
+    border: none;
+    color: #9fa8da;
+    font-weight: bold;
+    background: none;
+    box-shadow: 18px 18px 30px #d1d9e9, -18px -18px 30px #ffffff;
+    outline: none; /* Esto borra el marco del contenedor al hacer click */
+    transition: ease 0.2;
+}
+
+.button-container input[type='button']:hover{
+    box-shadow: 18px 18px 30px #cad2e2, -18px -18px 30px #f1f1ff;
+}
+
+.button-container input[type='button']:focus{
+    box-shadow: inset 18px 18px 30px #d1d9e9, inset -18px -18px 30px #ffffff;
 }
