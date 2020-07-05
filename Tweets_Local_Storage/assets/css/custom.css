@@ -147,5 +147,5 @@ textarea:placeholder-shown {
 }
 
 .button-container input[type='button']:focus{
-    box-shadow: inset 18px 18px 30px #d1d9e9, inset -18px -18px 30px #ffffff;
+    box-shadow: inset 9px 9px 15px #d1d9e9, inset -9px -9px 15px #ffffff;
 }
