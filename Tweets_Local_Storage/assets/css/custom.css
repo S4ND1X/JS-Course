@@ -1,3 +1,9 @@
+/* Utilidades */
+
+.text-align{
+    text-align: center;
+}
+
 /* Globales */
 
 html {
@@ -22,6 +28,15 @@ h2 {
   text-align: center;
 }
 
+
+li{
+  list-style: none;
+}
+
+textarea{
+  text-align: center;
+  background: none;
+}
 /* Text area neumorphism */
 
 .box {
@@ -78,11 +93,23 @@ textarea:placeholder-shown {
   background: none;
 }
 
+.flex-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.form-container{
+  margin: 0 auto;
+}
+
+
 /* Main content */
 @media (min-width: 768px) {
   .flex-container {
-    display: flex;
     justify-content: space-between;
+    flex-direction: row;
     width: 90%;
     margin: 0 auto;
     max-height: 100vh;
@@ -149,3 +176,34 @@ textarea:placeholder-shown {
 .button-container input[type='button']:focus{
     box-shadow: inset 9px 9px 15px #d1d9e9, inset -9px -9px 15px #ffffff;
 }
+
+
+
+#lista-tweets{
+  display: flex;
+  justify-content: space-between;
+  padding: 40px 40px;
+}
+
+#lista-tweets li{
+  font-weight: 600;
+  flex-shrink: 3;
+  margin: 0 10px;
+}
+#lista-tweets li a{
+  font-weight: 300;
+  transition: all 0.3s ease;
+}
+
+#lista-tweets li a:hover{
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.borrar-tweet{
+  margin-left: 5px;
+  text-transform: lowercase;
+  color: #da9f9f;
+  transition: all 0.5s ease 0s;
+}
+

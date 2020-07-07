@@ -14,13 +14,16 @@
 </head>
 <body>
         <div id="contenido">
-            <h1>Tweets Local Storage</h1>
+            <header>
+                <h1>Tweets Local Storage</h1>
+                <p class="text-align">&copy; Jorge Sanchez</p>
+            </header>
             <div class="flex-container">
                     <div class="form-container">
                         <div class="box">
-                            <h2>Write a tweet...</h2>
-                            <textarea name="comment" id="comment" placeholder="Type something..."></textarea>
-                        </div>
+                            <h2>Write a tweet</h2>
+                            <textarea name="comment" id="tweet_text" placeholder="Type something..."></textarea>
+                        </div><!-- Textarea container -->
                     </div>
                     <div class="tweets-container">
                         <h2>My Tweets</h2>
@@ -28,10 +31,10 @@
                     </div><!-- Tweets container -->
             </div>
             <div class="button-container">
-                <input type="button" id="submit_btn" value="Submit">
+                <input type="button" id="tweet_btn" value="Tweet">
             </div>
         </div> <!--#contenido-->
-
+        
     <script src="assets/js/app.js"></script>
 </body>
 </html>
