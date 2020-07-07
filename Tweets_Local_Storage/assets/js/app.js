@@ -1,3 +1,4 @@
+
 // Variables
 
 const listaTweets = document.querySelector("#lista-tweets"); //Seleccionar el contenedor de los tweets
@@ -101,7 +102,7 @@ function borrarTweetLocalStorage(tweet){
     let tweetABorrar = tweet.substring(0,tweet.length-1);
 
     tweets.forEach((tweet, index) => {
-        if(tweetABorrar == tweet){
+        if(tweetABorrar === tweet){
             tweets.splice(index, 1);
         }
     });
