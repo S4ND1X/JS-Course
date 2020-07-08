@@ -144,3 +144,5 @@ function removeCourseLocalStorage(courseID) {
   });
   localStorage.setItem("courses", JSON.stringify(coursesLS));
 }
+
+
