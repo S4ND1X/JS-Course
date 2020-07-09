@@ -10,7 +10,7 @@ class Budget {
     this.userBudgetLeft = Number(userBudget);
   }
 
-  userBudgetLeft(quantity = 0) {
+  userBudgetLeftFunc(quantity) {
     return (this.userBudgetLeft -= Number(quantity));
   }
 }
@@ -54,9 +54,35 @@ class Interface{
       expenseList.appendChild(li);
     }
 
+
+    budgetLeftUser(expenseQuantity){
+        const budgetLeftText = document.querySelector('span#restante');
+        const leftOver = budget.userBudgetLeftFunc(expenseQuantity);
+        budgetLeftText.innerHTML = leftOver;
+
+        this.checkBudget();
+    }
+
+    checkBudget(){
+
+        const totalBudget = budget.userBudget;
+        const totalLeftBudget = budget.userBudgetLeft;
+
+        if(totalBudget / 4 > totalLeftBudget){
+            const left = document.querySelector('.restante');
+            left.classList.remove('alert-success', 'alert-warning');
+            left.classList.add('alert-danger100');
+        }else if(totalBudget / 2 > totalLeftBudget){
+            const left = document.querySelector('.restante');
+            left.classList.remove('alert-success');
+            left.classList.add('alert-warning');
+        }
+
+        console.log(budget);
+    }
+
+
 }
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -88,6 +114,7 @@ form.addEventListener('submit',(e)=>{
     }else{
         ui.showMessage('Done', 'correcto');
         ui.addExpenseList(expenseName, expenseQuantity);
+        ui.budgetLeftUser(expenseQuantity);
     }
 
     setTimeout(()=>{
