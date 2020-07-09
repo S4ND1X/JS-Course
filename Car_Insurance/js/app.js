@@ -1,3 +1,5 @@
+const form = document.getElementById('cotizar-seguro');
+
 function Seguro(brand, year, type) {
     this.brand = brand;
     this.year = year;
@@ -46,7 +48,7 @@ function Interface(){
         if(type === 'error'){
             div.classList.add('mensaje', 'error');
         }else{
-            div.classList.add('mensaje', 'correct');
+            div.classList.add('mensaje', 'correcto');
         }
 
         div.innerHTML = `${message}`;
@@ -77,21 +79,32 @@ function Interface(){
         const div = document.createElement('div');
 
         div.innerHTML = `
-            <p>Resumen:</p>
+            <p class='header'>Resumen:</p>
             <p>Marca ${marca}</p>
             <p>Año: ${seguro.year}</p>
             <p>Tipo: ${seguro.type}</p>
             <p>Total: $ ${quantity}</p>
         `;
 
-        resultado.appendChild(div);
+        const spinner = document.querySelector('#cargando img');
+        spinner.style.display = 'block';
+        formButton.disabled = true;
+        formButton.style.cursor = 'progress'
+        setTimeout(()=>{
+            spinner.style.display = 'none';
+            resultado.appendChild(div);
+            formButton.disabled = false;
+            formButton.style.cursor = 'pointer';
+        }, 3000)
     }
 
+
+    console.log(formButton);
    
 
 }
 
-const form = document.getElementById('cotizar-seguro');
+const formButton = document.querySelector('.form-group button');
 
 form.addEventListener('submit', (e) =>{
     e.preventDefault();
@@ -123,6 +136,7 @@ form.addEventListener('submit', (e) =>{
 
         const quantity = seguro.cotizarSeguro();
         interface.showAnswer(seguro, quantity);
+        interface.showError('Cotizando...', 'correcto');
     }
     
 });
