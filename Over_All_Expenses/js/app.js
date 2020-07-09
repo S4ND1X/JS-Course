@@ -1,21 +1,27 @@
+//* Mensaje pidiendo input del presupueto de la semana en cuanto inicia la aplicacion
 const userBudget = prompt("Cual es tu presupuesto semanal?");
 
+//* Obtener contenedor del formulario
 const form = document.getElementById("agregar-gasto");
 
 let budget;
 
+//* Esta clase se encarga de mantener el presupuesto inicial ademas de llevar la cuenta de cuanto se ha gastado
 class Budget {
   constructor(userBudget) {
     this.userBudget = Number(userBudget);
     this.userBudgetLeft = Number(userBudget);
   }
 
+  //* El presupuesto que queda es igual al actual menos alguna cantidad
   userBudgetLeftFunc(quantity) {
     return (this.userBudgetLeft -= Number(quantity));
   }
 }
 
+//* La clase de interfaz se va a encargar de mostrrar todos los componentes visuales
 class Interface {
+  //* Se recibe la cantidad a desplegar y se obtiene el elemento en donde se va a mostra y se pone
   insertBudget(quantity) {
     const budgetSpan = document.querySelector("span#total");
     const budgetLeft = document.querySelector("span#restante");
@@ -24,6 +30,7 @@ class Interface {
     budgetLeft.innerHTML = `${quantity}`;
   }
 
+  //* Se muestra un mensaje y dependiendo el tipo seria rojo o verde
   showMessage(message, type) {
     const divMessage = document.createElement("div");
     divMessage.classList.add("text-center", "alert");
@@ -38,6 +45,7 @@ class Interface {
     document.querySelector(".primario").insertBefore(divMessage, form);
   }
 
+  //* Se obtiene el gasto con su nombre para posteriormente desplegarlo como un hijo de la lista desordenada
   addExpenseList(expenseName, expenseQuantity) {
     const expenseList = document.querySelector("#gastos ul");
     const li = document.createElement("li");
@@ -53,6 +61,7 @@ class Interface {
     expenseList.appendChild(li);
   }
 
+  //* Se obtiene cuando se gasto, se actualiza la interfaz y al mismo tiempo se comprueba cuanto porcentaje del total queda
   budgetLeftUser(expenseQuantity) {
     const budgetLeftText = document.querySelector("span#restante");
     const leftOver = budget.userBudgetLeftFunc(expenseQuantity);
@@ -61,6 +70,7 @@ class Interface {
     this.checkBudget();
   }
 
+  //* Dependiendo del porcentaje total del presupuesto que queda es el color que se despliega
   checkBudget() {
     const totalBudget = budget.userBudget;
     const totalLeftBudget = budget.userBudgetLeft;
@@ -74,11 +84,10 @@ class Interface {
       left.classList.remove("alert-success");
       left.classList.add("alert-warning");
     }
-
-    console.log(budget);
   }
 }
 
+//* Se comprueba al cargar la pagina que el presupuesto ingresado sea valido
 document.addEventListener("DOMContentLoaded", () => {
   if (userBudget === null || userBudget == "") {
     window.location.reload();
@@ -91,6 +100,8 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log(budget.userBudget);
   }
 });
+
+//* Se detecta cuando se envia el formulario, se comprueba que sea valido, se obtienen los valores y se pasan a el objeto budget para que hara las respectivas evaluaciones
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
