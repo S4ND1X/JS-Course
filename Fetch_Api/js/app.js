@@ -2,6 +2,7 @@
 document.getElementById("txtBtn").addEventListener("click", loadTXT);
 
 function loadTXT() {
+  //?Al hacer fetch se genera un promise que de ser concretada .then se encargara de hacer algo con esa respuesta, en este caso se convierte a texto y una vez con eso se imprime
   fetch("datos.txt")
     .then((response) => {
       return response.text();
@@ -19,6 +20,7 @@ document.getElementById("jsonBtn").addEventListener("click", loadJSON);
 
 function loadJSON() {
   fetch("empleados.json")
+    //?Al hacer fetch se genera un promise que de ser concretada .then se encargara de hacer algo con esa respuesta, en este caso se convierte a json y una vez con eso se imprime
     .then((response) => {
       return response.json();
     })
@@ -42,6 +44,7 @@ document.getElementById("apiBTN").addEventListener("click", loadRest);
 
 function loadRest() {
   fetch("https://picsum.photos/list")
+    //?Al hacer fetch se genera un promise que de ser concretada .then se encargara de hacer algo con esa respuesta, en este caso se convierte a json y una vez con eso se imprime
     .then((response) => {
       return response.json();
     })
