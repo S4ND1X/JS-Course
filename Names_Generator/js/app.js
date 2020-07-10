@@ -4,6 +4,8 @@ const generateName = document.getElementById("generar-nombre");
 generateName.addEventListener("submit", (e) => {
   e.preventDefault();
 
+  //* Obteniendo los inputs
+
   const originName = document.getElementById("origen");
   const selectedOriginName = originName.options[originName.selectedIndex].value;
   console.log(selectedOriginName);
@@ -17,6 +19,7 @@ generateName.addEventListener("submit", (e) => {
   let url = "";
   url += "http://uinames.com/api/?";
 
+  //* Construyendo el url
   if (selectedOriginName !== "") {
     url += `region=${selectedOriginName}&`;
   }
@@ -33,13 +36,14 @@ generateName.addEventListener("submit", (e) => {
 
   xhr.open("GET", url, true);
 
+  //* Construir el template con la respuesta del servidor
   xhr.onload = () => {
     if (this.status === 200) {
-       const nombres = JSON.parse(this.responseText); 
+      const nombres = JSON.parse(this.responseText);
       let htmlNombres = `<h2>Nombres Generados</h2>`;
-      htmlNombres+='<ul class="lista">';
+      htmlNombres += '<ul class="lista">';
 
-      nombres.forEach(nombre => {
+      nombres.forEach((nombre) => {
         htmlNombres += `
 
         <li>${nombre.name}
@@ -47,13 +51,11 @@ generateName.addEventListener("submit", (e) => {
         `;
       });
 
-      htmlNombres+='</ul>';
+      htmlNombres += "</ul>";
 
-      document.getElementById('resultado').innerHTML = htmlNombres;
+      document.getElementById("resultado").innerHTML = htmlNombres;
     }
   };
-
-  
 
   xhr.send();
 });
