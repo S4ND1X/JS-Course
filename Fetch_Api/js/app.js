@@ -14,7 +14,6 @@ function loadTXT() {
     });
 }
 
-
 //*Fetch a un json
 document.getElementById("jsonBtn").addEventListener("click", loadJSON);
 
@@ -29,6 +28,31 @@ function loadJSON() {
         html += `<ul>
                     <li>${element.nombre}</li>
                     <li>${element.puesto}</li>
+                </ul>`;
+      });
+      document.getElementById("resultado").innerHTML = html;
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+}
+
+//* Fetch RestApi
+document.getElementById("apiBTN").addEventListener("click", loadRest);
+
+function loadRest() {
+  fetch("https://picsum.photos/list")
+    .then((response) => {
+      return response.json();
+    })
+    .then((images) => {
+      let html = ``;
+      images.forEach((image) => {
+        html += `<ul>
+                    <li>${image.author}</li>
+                    <li>
+                        <img src="${image.post_url}">
+                    </li>
                 </ul>`;
       });
       document.getElementById("resultado").innerHTML = html;
