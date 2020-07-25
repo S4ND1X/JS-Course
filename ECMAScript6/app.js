@@ -18,7 +18,3 @@ const client = {
 
 let {data: {ubicacion}} = client;
 console.log(ubicacion);
-
-
-
-

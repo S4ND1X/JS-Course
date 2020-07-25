@@ -56,6 +56,6 @@ generateName.addEventListener("submit", (e) => {
       document.getElementById("resultado").innerHTML = htmlNombres;
     }
   };
-
+  
   xhr.send();
 });
