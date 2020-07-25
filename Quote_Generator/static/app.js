@@ -6,10 +6,26 @@ const authorPlaceHolder = document.getElementById("author");
 const tweetBtn = document.getElementById("twitter");
 const quoteBtn = document.getElementById("new-quote");
 
+const loader = document.getElementById("loader");
+
+function loading() {
+  loader.innerHTML = `
+                    <div></div>
+                    <div></div>`;
+  quoteContainer.hidden = true;
+}
+
+function completed() {
+  quoteContainer.hidden = false;
+  loader.innerHTML = ``;
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  loading();
   getQuote()
     .then((response) => {
       updateInterface(response);
+      completed();
     })
     .catch((error) => {
       console.log(error);
@@ -37,9 +53,11 @@ function tweetQuote() {
 }
 
 quoteBtn.addEventListener("click", () => {
+  loading();
   getQuote()
     .then((response) => {
       updateInterface(response);
+      completed();
     })
     .catch((error) => {
       console.log(error);
@@ -57,4 +75,5 @@ function updateInterface({ author, en }) {
 
   quotePlaceHolder.innerText = en;
   authorPlaceHolder.innerText = author;
+  completed();
 }
