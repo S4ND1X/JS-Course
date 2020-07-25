@@ -6,6 +6,16 @@ const authorPlaceHolder = document.getElementById("author");
 const tweetBtn = document.getElementById("twitter");
 const quoteBtn = document.getElementById("new-quote");
 
+document.addEventListener("DOMContentLoaded", () => {
+  getQuote()
+    .then((response) => {
+      updateInterface(response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
 async function getQuote() {
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   try {
@@ -19,6 +29,13 @@ async function getQuote() {
   }
 }
 
+function tweetQuote() {
+  const quote = quotePlaceHolder.innerText;
+  const author = authorPlaceHolder.innerText;
+  const twitterUrl = `https://twitter.com/intent/tweet?text=${quote} - ${author}`;
+  window.open(twitterUrl, "_blank");
+}
+
 quoteBtn.addEventListener("click", () => {
   getQuote()
     .then((response) => {
@@ -28,6 +45,8 @@ quoteBtn.addEventListener("click", () => {
       console.log(error);
     });
 });
+
+tweetBtn.addEventListener("click", tweetQuote);
 
 function updateInterface({ author, en }) {
   if (en.lenght > 60) {
