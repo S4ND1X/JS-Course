@@ -1,7 +1,7 @@
 //
 
 const count = 10;
-const apiKey = "";
+const apiKey = "GVQFdMYB2OHduR1ng45kr5-bjd_CXLTzkGRHkB0M5hg";
 const apiUrl = `https://api.unsplash.com/photos/random/?client_id=${apiKey}&count=${count}`;
 
 async function getImages() {
@@ -12,6 +12,11 @@ async function getImages() {
   } catch (error) {
     console.log(error.message);
   }
+}
+
+
+function displayImages(){
+
 }
 
 getImages();

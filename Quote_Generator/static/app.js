@@ -1,6 +1,7 @@
 //Fetching data from API
 
 const quoteContainer = document.getElementById("quote-container");
+// Esenciales
 const quotePlaceHolder = document.getElementById("quote");
 const authorPlaceHolder = document.getElementById("author");
 const tweetBtn = document.getElementById("twitter");
@@ -8,6 +9,7 @@ const quoteBtn = document.getElementById("new-quote");
 
 const loader = document.getElementById("loader");
 
+// Loader
 function loading() {
   loader.innerHTML = `
                     <div></div>
@@ -32,6 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+// Fetch to API
+
 async function getQuote() {
   const proxyUrl = "https://cors-anywhere.herokuapp.com/";
   try {
@@ -45,6 +49,8 @@ async function getQuote() {
   }
 }
 
+// Twitter api
+
 function tweetQuote() {
   const quote = quotePlaceHolder.innerText;
   const author = authorPlaceHolder.innerText;
@@ -52,6 +58,7 @@ function tweetQuote() {
   window.open(twitterUrl, "_blank");
 }
 
+// New quote button calls the api function and updates the interface
 quoteBtn.addEventListener("click", () => {
   loading();
   getQuote()
@@ -65,6 +72,8 @@ quoteBtn.addEventListener("click", () => {
 });
 
 tweetBtn.addEventListener("click", tweetQuote);
+
+// Get the placeholer and insert the author
 
 function updateInterface({ author, en }) {
   if (en.lenght > 60) {
